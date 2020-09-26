@@ -1,6 +1,6 @@
 ﻿using CourtageCoin.Domain.Entities;
 using CourtageCoin.Domain.Interfaces.Repositories.ReadOnly;
-using CourtageCoin.Infra.Data.Context;
+using CourtageCoin.Infra.Data.Contexto;
 using Dapper;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -14,47 +14,51 @@ namespace CourtageCoin.Infra.Data.DapperRepositories
     {
         public CarteiraDapperRepository(IConfiguration configuration) : base(configuration)
         {
-
-        }
-        public Carteira ConsultarAtivo(string Nome)
-        {
-            var connectionString = this.GetConnection();
-            using (var con = new SqlConnection(connectionString))
-            {
-                try
-                {
-                    var carteira = con.Query<Carteira>("Select * FROM Carteira Where NomeAtivo = @Nome",
-                    new { NomeAtivo = Nome }).FirstOrDefault();
-
-                    return carteira;
-                }
-                catch(Exception ex)
-                {
-                    throw ex;
-                }
-            }
         }
 
         public IEnumerable<Carteira> GetAll()
         {
             var connectionString = this.GetConnection();
-            using (var con = new SqlConnection(connectionString))
+            try
             {
-                try
+                using (var con = new SqlConnection(connectionString))
                 {
-                    var carteira = con.Query<Carteira>(@"SELECT * FROM Carteira");
+                    var carteira = con.Query<Carteira>(@"SELECT * FROM CARTEIRA");
                     return carteira;
                 }
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
             }
+            catch(SqlException ex)
+            {
+                throw ex;
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+            
         }
 
         public Carteira GetById(int id)
         {
-            throw new System.NotImplementedException();
+            var connectionString = this.GetConnection();
+            try
+            {
+                using (var con = new SqlConnection(connectionString))
+                {
+                    var carteira = con.Query<Carteira>(@"SELECT * FROM CARTEIRA WHERE CarteiraID = @CarteiraID",
+                        new { CartertaID = id}).FirstOrDefault();
+
+                    return carteira;
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

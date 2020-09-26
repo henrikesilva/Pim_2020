@@ -1,24 +1,20 @@
 ﻿using CourtageCoin.Domain.Entities;
-using CourtageCoin.Domain.Interfaces.Repositories;
-using CourtageCoin.Domain.Interfaces.Services;
-using CourtageCoin.Domain.Interfaces.Services.ReadOnly;
+using CourtageCoin.Domain.Interfaces.Repositories.ReadOnly;
+using CourtageCoin.Domain.Interfaces.Repositories.Write;
 using CourtageCoin.Domain.Services.Common;
 
 namespace CourtageCoin.Domain.Services
 {
-    public class CarteiraService : ServiceBase<Carteira>, ICarteiraService
+    public class CarteiraService : ServiceBase<Carteira>
     {
-        private readonly ICarteiraRepository _icarteiraRepository;
-        private readonly ICarteiraReadOnlyRepository _icarteiraReadOnlyRepository;
-        public CarteiraService(ICarteiraRepository carteiraRepository, ICarteiraReadOnlyRepository carteiraReadOnlyRepository) : base(carteiraRepository, carteiraReadOnlyRepository)
-        {
-            _icarteiraRepository = carteiraRepository;
-            _icarteiraReadOnlyRepository = carteiraReadOnlyRepository;
-        }
+        private readonly ICarteiraWriteRepository _carteiraWriteRepository;
+        private readonly ICarteiraReadOnlyRepository _carteiraReadOnlyRepository;
 
-        public Carteira ConsultarAtivo(string nome)
+        public CarteiraService(ICarteiraWriteRepository carteiraWriteRepository, ICarteiraReadOnlyRepository carteiraReadOnlyRepository)
+            : base(carteiraWriteRepository, carteiraReadOnlyRepository)
         {
-            return _icarteiraReadOnlyRepository.ConsultarAtivo(nome);
+            _carteiraWriteRepository = carteiraWriteRepository;
+            _carteiraReadOnlyRepository = carteiraReadOnlyRepository;
         }
     }
 }

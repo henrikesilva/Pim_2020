@@ -5,6 +5,5 @@ namespace CourtageCoin.Domain.Interfaces.Repositories.ReadOnly
 {
     public interface ICarteiraReadOnlyRepository : IBaseReadOnlyRepository<Carteira>
     {
-        Carteira ConsultarAtivo(string Nome);
     }
 }

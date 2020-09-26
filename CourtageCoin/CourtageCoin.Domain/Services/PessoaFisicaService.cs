@@ -1,20 +1,19 @@
 ﻿using CourtageCoin.Domain.Entities;
-using CourtageCoin.Domain.Interfaces.Repositories;
-using CourtageCoin.Domain.Interfaces.Services;
-using CourtageCoin.Domain.Interfaces.Services.ReadOnly;
+using CourtageCoin.Domain.Interfaces.Repositories.ReadOnly;
+using CourtageCoin.Domain.Interfaces.Repositories.Write;
 using CourtageCoin.Domain.Services.Common;
 
 namespace CourtageCoin.Domain.Services
 {
-    public class PessoaFisicaService : ServiceBase<PessoaFisica>, IPessoaFisicaService
+    public class PessoaFisicaService : ServiceBase<PessoaFisica>
     {
-        private readonly IPessoaFisicaRepository _ipessoaFisicaRepository;
-        private readonly IPessoaFisicaReadOnlyRepository _ipessoaFisicaReadOnlyRepository;
-        public PessoaFisicaService(IPessoaFisicaRepository pessoaFisicaRepository, IPessoaFisicaReadOnlyRepository pessoaFisicaReadOnlyRepository) 
-            : base(pessoaFisicaRepository, pessoaFisicaReadOnlyRepository)
+        private readonly IPessoaFisicaWriteRepository _pessoaFisicaWriteRepository;
+        private readonly IPessoaFisicaReadOnlyRepository _pessoaFisicaReadOnlyRepository;
+        public PessoaFisicaService(IPessoaFisicaWriteRepository pessoaFisicaWriteRepository, IPessoaFisicaReadOnlyRepository pessoaFisicaReadOnlyRepository) 
+            : base(pessoaFisicaWriteRepository, pessoaFisicaReadOnlyRepository)
         {
-            _ipessoaFisicaRepository = pessoaFisicaRepository;
-            _ipessoaFisicaReadOnlyRepository = pessoaFisicaReadOnlyRepository;
+            _pessoaFisicaWriteRepository = pessoaFisicaWriteRepository;
+            _pessoaFisicaReadOnlyRepository = pessoaFisicaReadOnlyRepository;
         }
     }
 }

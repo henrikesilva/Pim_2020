@@ -1,53 +1,55 @@
-﻿using CourtageCoin.Domain.Interfaces.Repositories.Common;
+﻿using CourtageCoin.Domain.Interfaces.Repositories.ReadOnly.Common;
+using CourtageCoin.Domain.Interfaces.Repositories.Write.Common;
 using CourtageCoin.Domain.Interfaces.Services.Common;
-using CourtageCoin.Domain.Interfaces.Services.ReadOnly.Common;
+using CourtageCoin.Domain.Interfaces.Services.Write.Common;
 using System;
 using System.Collections.Generic;
 
 namespace CourtageCoin.Domain.Services.Common
 {
-    public class ServiceBase<TEntity> : IDisposable, IServiceBase<TEntity>, IReadOnlyServiceBase<TEntity> where TEntity : class
+    public class ServiceBase<TEntity> : IDisposable, IWriteServiceBase<TEntity>, IReadOnlyServiceBase<TEntity> where TEntity : class
     {
-        private readonly IRepositoryBase<TEntity> _irepositoryBase;
-        private readonly IBaseReadOnlyRepository<TEntity> _ibaseReadOnlyRepository;
+        private readonly IRepositoryBase<TEntity> _repositoryBase;
+        private readonly IBaseReadOnlyRepository<TEntity> _baseReadOnlyRepository;
 
         public ServiceBase(IRepositoryBase<TEntity> repositoryBase, IBaseReadOnlyRepository<TEntity> baseReadOnlyRepository)
         {
-            _irepositoryBase = repositoryBase;
-            _ibaseReadOnlyRepository = baseReadOnlyRepository;
+            _repositoryBase = repositoryBase;
+            _baseReadOnlyRepository = baseReadOnlyRepository;
         }
 
-        #region Escrita
+        #region [WRITE]
         public void Adicionar(TEntity obj)
         {
-            _irepositoryBase.Adicionar(obj);
+            _repositoryBase.Adicionar(obj);
         }
 
         public void Atualizar(TEntity obj)
         {
-            _irepositoryBase.Remover(obj);
+            _repositoryBase.Atualizar(obj);
         }
+
         public void Remover(TEntity obj)
         {
-            _irepositoryBase.Remover(obj);
-        }
-
-        #endregion
-        #region Leitura
-        public IEnumerable<TEntity> GetAll()
-        {
-            return _ibaseReadOnlyRepository.GetAll();
-        }
-
-        public TEntity GetById(int id)
-        {
-            return _ibaseReadOnlyRepository.GetById(id);
+            _repositoryBase.Remover(obj);
         }
         #endregion
 
         public void Dispose()
         {
-            _irepositoryBase.Dispose();
+            _repositoryBase.Dispose();
         }
+
+        #region [READ]
+        public IEnumerable<TEntity> GetAll()
+        {
+            return _baseReadOnlyRepository.GetAll();
+        }
+
+        public TEntity GetByID(int id)
+        {
+            return _baseReadOnlyRepository.GetById(id);
+        }
+        #endregion
     }
 }

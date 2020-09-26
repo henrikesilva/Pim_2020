@@ -1,9 +1,10 @@
 ﻿using CourtageCoin.Domain.Entities;
 using CourtageCoin.Domain.Interfaces.Services.Common;
+using CourtageCoin.Domain.Interfaces.Services.Write.Common;
 
 namespace CourtageCoin.Domain.Interfaces.Services
 {
-    public interface IPessoaFisicaService : IServiceBase<PessoaFisica>, IReadOnlyServiceBase<PessoaFisica>
+    public interface IPessoaFisicaService : IWriteServiceBase<PessoaFisica>, IReadOnlyServiceBase<PessoaJuridica>
     {
     }
 }

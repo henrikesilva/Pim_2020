@@ -1,20 +1,19 @@
 ﻿using CourtageCoin.Domain.Entities;
-using CourtageCoin.Domain.Interfaces.Repositories;
-using CourtageCoin.Domain.Interfaces.Services;
-using CourtageCoin.Domain.Interfaces.Services.ReadOnly;
+using CourtageCoin.Domain.Interfaces.Repositories.ReadOnly;
+using CourtageCoin.Domain.Interfaces.Repositories.Write;
 using CourtageCoin.Domain.Services.Common;
 
 namespace CourtageCoin.Domain.Services
 {
-    public class PessoaJuridicaService : ServiceBase<PessoaJuridica>, IPessoaJuridicaService
+    public class PessoaJuridicaService : ServiceBase<PessoaJuridica>
     {
-        private readonly IPessoaJuridicaRepository _ipessoaJuridicaRepository;
-        private readonly IPessoaJuridicaReadOnlyRepository _ipessoaJuridicaReadOnlyRepository;
-        public PessoaJuridicaService(IPessoaJuridicaRepository pessoaJuridicaRepository, IPessoaJuridicaReadOnlyRepository pessoaJuridicaReadOnlyRepository)
-               : base(pessoaJuridicaRepository, pessoaJuridicaReadOnlyRepository)
+        private readonly IPessoaJuridicaWriteRepository _pessoaJuridicaWriteRepository;
+        private readonly IPessoaJuridicaReadOnlyRepository _pessoaJuridicaReadOnlyRepository;
+        public PessoaJuridicaService(IPessoaJuridicaWriteRepository pessoaJuridicaWriteRepository, IPessoaJuridicaReadOnlyRepository pessoaJuridicaReadOnlyRepository) 
+            : base(pessoaJuridicaWriteRepository, pessoaJuridicaReadOnlyRepository)
         {
-            _ipessoaJuridicaRepository = pessoaJuridicaRepository;
-            _ipessoaJuridicaReadOnlyRepository = pessoaJuridicaReadOnlyRepository;
+            _pessoaJuridicaWriteRepository = pessoaJuridicaWriteRepository;
+            _pessoaJuridicaReadOnlyRepository = pessoaJuridicaReadOnlyRepository;
         }
     }
 }

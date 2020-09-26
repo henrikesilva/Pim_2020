@@ -1,20 +1,20 @@
 ﻿using CourtageCoin.Domain.Entities;
-using CourtageCoin.Domain.Interfaces.Repositories;
-using CourtageCoin.Domain.Interfaces.Services;
-using CourtageCoin.Domain.Interfaces.Services.ReadOnly;
+using CourtageCoin.Domain.Interfaces.Repositories.ReadOnly;
+using CourtageCoin.Domain.Interfaces.Repositories.Write;
 using CourtageCoin.Domain.Services.Common;
 
 namespace CourtageCoin.Domain.Services
 {
-    public class FuncionarioService : ServiceBase<Funcionario>, IFuncionarioService
+    public class FuncionarioService : ServiceBase<Funcionario>
     {
-        private readonly IFuncionarioRepository _ifuncionarioRepository;
-        private readonly IFuncionarioReadOnlyRepository _ifuncionarioReadOnlyRepository;
-        public FuncionarioService(IFuncionarioRepository funcionarioRepository, IFuncionarioReadOnlyRepository funcionarioReadOnlyRepository) 
-            : base (funcionarioRepository, funcionarioReadOnlyRepository)
+        private readonly IFuncionarioWriteRepository _funcionarioWriteRepository;
+        private readonly IFuncionarioReadOnlyRepository _funcionarioReadOnlyRepository;
+
+        public FuncionarioService(IFuncionarioWriteRepository funcionarioWriteRepository, IFuncionarioReadOnlyRepository funcionarioReadOnlyRepository) 
+            : base(funcionarioWriteRepository, funcionarioReadOnlyRepository)
         {
-            _ifuncionarioRepository = funcionarioRepository;
-            _ifuncionarioReadOnlyRepository = funcionarioReadOnlyRepository;
+            _funcionarioWriteRepository = funcionarioWriteRepository;
+            _funcionarioReadOnlyRepository = funcionarioReadOnlyRepository;
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using CourtageCoin.Domain.Entities;
 using CourtageCoin.Domain.Interfaces.Repositories.ReadOnly;
-using CourtageCoin.Infra.Data.Context;
+using CourtageCoin.Infra.Data.Contexto;
 using Dapper;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -15,44 +15,49 @@ namespace CourtageCoin.Infra.Data.DapperRepositories
         public ClienteDapperRepository(IConfiguration configuration) : base(configuration)
         {
         }
+
         public IEnumerable<Cliente> GetAll()
         {
             var connectionString = this.GetConnection();
-            using(var con = new SqlConnection(connectionString))
+            try
             {
-                try
+                using (var con = new SqlConnection(connectionString))
                 {
-                    var cliente = con.Query<Cliente>(@"SELECT * FROM Cliente");
-
+                    var cliente = con.Query<Cliente>(@"SELECT * FROM CLIENTE");
                     return cliente;
                 }
-                catch(Exception ex)
-                {
-                    throw ex;
-                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
         }
 
         public Cliente GetById(int id)
         {
             var connectionString = this.GetConnection();
-
-            using (var con = new SqlConnection(connectionString))
+            try
             {
-                try
+                using (var con = new SqlConnection(connectionString))
                 {
-                    var cliente = con.Query<Cliente>("Select * FROM Cliente WHERE CodigoCliente = @id",
-                    new { CodigoCliente = id }).FirstOrDefault();
+                    var cliente = con.Query<Cliente>(@"SELECT * FROM CLIENTE WHERE ClienteID = @ClienteID",
+                        new { ClienteID = id }).FirstOrDefault();
 
                     return cliente;
                 }
-                catch(Exception ex)
-                {
-                    throw ex;
-                }
-                
             }
-
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }
