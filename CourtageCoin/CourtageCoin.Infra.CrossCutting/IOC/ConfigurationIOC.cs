@@ -1,6 +1,10 @@
 ﻿using Autofac;
+using CourtageCoin.Application.Interfaces;
+using CourtageCoin.Application.Services;
 using CourtageCoin.Domain.Interfaces.Repositories.ReadOnly;
 using CourtageCoin.Domain.Interfaces.Repositories.Write;
+using CourtageCoin.Domain.Interfaces.Services;
+using CourtageCoin.Domain.Services;
 using CourtageCoin.Infra.Data.DapperRepositories;
 using CourtageCoin.Infra.Data.EntityFrameworkRepositories;
 
@@ -13,10 +17,19 @@ namespace CourtageCoin.Infra.CrossCutting.IOC
             #region [REGISTRA IOC]
 
             #region [IOC APPLICATION]
-
+            builder.RegisterType<CarteiraAppService>().As<ICarteiraAppService>();
+            builder.RegisterType<ClienteAppService>().As<IClienteAppService>();
+            builder.RegisterType<FuncionarioAppService>().As<IFuncionarioAppService>();
+            builder.RegisterType<UsuarioAppService>().As<IUsuarioAppService>();
             #endregion
 
             #region [IOC SERVICES]
+            builder.RegisterType<CarteiraService>().As<ICarteiraService>();
+            builder.RegisterType<ClienteService>().As<IClienteService>();
+            builder.RegisterType<FuncionarioService>().As<IFuncionarioService>();
+            builder.RegisterType<PessoaFisicaService>().As<IPessoaFisicaService>();
+            builder.RegisterType<PessoaJuridicaService>().As<IPessoaJuridicaService>();
+            builder.RegisterType<UsuarioService>().As<IUsuarioService>();
             #endregion
 
             #region[IOC REPOSITORIES SQL]
