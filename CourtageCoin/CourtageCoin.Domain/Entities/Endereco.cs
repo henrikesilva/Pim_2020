@@ -4,16 +4,15 @@ namespace CourtageCoin.Domain.Entities
 {
     public class Endereco
     {
-        public int EnderecoID { get; set; }
-        public string Logadouro { get; set; }
-        public string Numero { get; set; }
-        public string Bairro { get; set; }
-        public string Complemento { get; set; }
-        public int CidadeID { get; set; }
+        public int END_INT_ID { get; set; }
+        public string EST_DTR_LOGRADOURO { get; set; }
+        public string EST_STR_NUMERO { get; set; }
+        public string EST_STR_BAIRRO { get; set; }
+        public string EST_STR_COMPLEMENTO { get; set; }
+        public int CID_INT_ID { get; set; }
 
-
-        public Cidade Cidade { get; set; }
-        public virtual ICollection<PessoaFisica> PessoaFisica { get; set; }
-        public virtual ICollection<PessoaJuridica> PessoaJuridica { get; set; }
+        public virtual Cidade Cidade { get; set; }
+        public virtual IEnumerable<PessoaFisica> PessoaFisicas { get; set; }
+        public virtual IEnumerable<PessoaJuridica> PessoaJuridicas { get; set; }
     }
 }

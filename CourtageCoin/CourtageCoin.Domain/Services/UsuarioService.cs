@@ -1,20 +1,15 @@
 ﻿using CourtageCoin.Domain.Entities;
-using CourtageCoin.Domain.Interfaces.Repositories.ReadOnly;
-using CourtageCoin.Domain.Interfaces.Repositories.Write;
-using CourtageCoin.Domain.Services.Common;
+using CourtageCoin.Domain.Interfaces.Repositories;
+using CourtageCoin.Domain.Interfaces.Services;
 
 namespace CourtageCoin.Domain.Services
 {
-    public class UsuarioService : ServiceBase<Usuario>
+    public class UsuarioService : ServiceBase<Usuario>, IUsuarioService
     {
-        private readonly IUsuarioWriteRepository _usuarioWriteRepository;
-        private readonly IUsuarioReadOnlyRepository _usuarioReadOnlyRepository;
-
-        public UsuarioService(IUsuarioWriteRepository usuarioWriteRepository, IUsuarioReadOnlyRepository usuarioReadOnlyRepository) 
-            : base (usuarioWriteRepository, usuarioReadOnlyRepository)
+        private IUsuarioRepository _usuarioRepository;
+        public UsuarioService(IUsuarioRepository usuarioRepository): base(usuarioRepository)
         {
-            _usuarioWriteRepository = usuarioWriteRepository;
-            _usuarioReadOnlyRepository = usuarioReadOnlyRepository;
+            _usuarioRepository = usuarioRepository;
         }
     }
 }

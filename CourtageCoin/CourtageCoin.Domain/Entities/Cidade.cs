@@ -1,11 +1,14 @@
-﻿namespace CourtageCoin.Domain.Entities
+﻿using System.Collections.Generic;
+
+namespace CourtageCoin.Domain.Entities
 {
     public class Cidade
     {
-        public int CidadeID { get; set; }
-        public string Descricao { get; set; }
-        public int EstadoID { get; set; }
+        public int CID_INT_ID { get; set; }
+        public string CID_STR_DESC { get; set; }
+        public int EST_INT_ID { get; set; }
 
-        public Estado Estado { get; set; }
+        public virtual Estado Estado { get; set; }
+        public virtual IEnumerable<Endereco> Enderecos { get; set; }
     }
 }

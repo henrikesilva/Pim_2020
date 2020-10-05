@@ -4,10 +4,10 @@ namespace CourtageCoin.Domain.Entities
 {
     public class Pais
     {
-        public int PaisID { get; set; }
-        public string Descricao { get; set; }
-        public string Sigla { get; set; }
-
-        public virtual ICollection<Estado> Estados { get; set; }
+        public int PAI_INT_ID { get; set; }
+        public string PAI_STR_DESC { get; set; }
+        public string PAI_STR_SIGLA { get; set; }
+        
+        public virtual IEnumerable<Estado> Estados { get; set; }
     }
 }
