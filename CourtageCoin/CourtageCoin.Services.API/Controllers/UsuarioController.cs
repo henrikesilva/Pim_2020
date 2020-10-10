@@ -18,7 +18,7 @@ namespace CourtageCoin.Services.Api.Controllers
             _usuarioAppService = usuarioAppService;
         }
 
-        //[AllowAnonymous]
+        [AllowAnonymous]
         [Route("login")]
         [HttpPost]
         public async Task<IActionResult> Login([FromBody] UsuarioDTO usuarioDTO)
@@ -52,7 +52,7 @@ namespace CourtageCoin.Services.Api.Controllers
             
         }
 
-        //[Authorize]
+        [Authorize]
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
@@ -78,6 +78,7 @@ namespace CourtageCoin.Services.Api.Controllers
             }
         }
 
+        [Authorize]
         [HttpGet("{id}")]
         public ActionResult<string> ObterPorId(int id)
         {
@@ -96,6 +97,7 @@ namespace CourtageCoin.Services.Api.Controllers
             }
         }
 
+        [Authorize]
         [HttpPut("{id}")]
         public ActionResult Atualzar([FromBody] Usuario usuario)
         {

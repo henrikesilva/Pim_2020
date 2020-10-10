@@ -2,12 +2,10 @@ using Autofac;
 using AutoMapper;
 using CourtageCoin.Domain.Entities;
 using CourtageCoin.Infra.CrossCutting.IOC;
-using CourtageCoin.Infra.Data.Contexto;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -52,7 +50,7 @@ namespace CourtageCoin.Services.Api
                 auth.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 auth.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             })
-                .AddJwtBearer(auth => 
+                .AddJwtBearer(auth =>
                 {
                     auth.RequireHttpsMetadata = false;
                     auth.SaveToken = true;
@@ -84,8 +82,8 @@ namespace CourtageCoin.Services.Api
             app.UseRouting();
 
             app.UseCors(MyAllowSpecificOrigins);
-            app.UseAuthorization();
             app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
