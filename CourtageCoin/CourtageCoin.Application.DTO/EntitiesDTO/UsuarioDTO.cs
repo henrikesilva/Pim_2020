@@ -13,7 +13,10 @@ namespace CourtageCoin.Domain.Entities
         public int FUN_INT_ID { get; set; }
         public int CLI_INT_ID { get; set; }
 
-        public virtual FuncionarioDTO Funcionario { get; set; }
-        public virtual ClienteDTO Cliente { get; set; }
+        
+        public virtual FuncionarioDTO FuncionarioDTO { get; set; }
+        public virtual ClienteDTO ClienteDTO { get; set; }
+        
+        public static string secret = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbiI6ImhlbnJpcXVlLnNsaW1hIiwic2VuaGEiOiIxMjM0IiwicGVyZmlsIjoxNTE2Mn0.MDtwG2Pq_gLHq_Qqo3nRtJwBeLKcoA8X6bCMgsXsYEU";
     }
 }

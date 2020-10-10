@@ -4,6 +4,6 @@ namespace CourtageCoin.Domain.Interfaces.Repositories
 {
     public interface IUsuarioRepository : IRepositoryBase<Usuario>
     {
-        //Usuario Login(string login, string senha);
+        Usuario Login(string login, string senha);
     }
 }
