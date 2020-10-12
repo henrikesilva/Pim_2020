@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace CourtageCoin.Domain.Entities
+namespace CourtageCoin.Application.DTO.EntitiesDTO
 {
     public class ClienteDTO
     {

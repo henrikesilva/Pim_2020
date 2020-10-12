@@ -44,7 +44,7 @@ namespace CourtageCoin.Services.Api
             });
 
             //AUTENTICAÇÃO POR TOKEN JWT BEARER
-            var key = Encoding.ASCII.GetBytes(UsuarioDTO.secret);
+            var key = Encoding.ASCII.GetBytes(Usuario.secret);
             services.AddAuthentication(auth =>
             {
                 auth.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;

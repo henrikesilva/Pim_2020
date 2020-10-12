@@ -1,4 +1,5 @@
-﻿using CourtageCoin.Application.Interface;
+﻿using CourtageCoin.Application.DTO.EntitiesDTO;
+using CourtageCoin.Application.Interface;
 using CourtageCoin.Domain.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -21,24 +22,25 @@ namespace CourtageCoin.Services.Api.Controllers
         [AllowAnonymous]
         [Route("login")]
         [HttpPost]
-        public async Task<IActionResult> Login([FromBody] UsuarioDTO usuarioDTO)
+        public async Task<IActionResult> Login([FromBody] Usuario usuario)
         {
-            if (usuarioDTO == null)
+            if (usuario == null)
             {
                 return NoContent();
             }
 
-            var login = usuarioDTO.USU_STR_LOGIN;
-            var senha = usuarioDTO.USU_STR_SENHA;
-            var usuario = _usuarioAppService.GetUsuario(login, senha);
+            var login = usuario.USU_STR_LOGIN;
+            var senha = usuario.USU_STR_SENHA;
+            var acesso = _usuarioAppService.GetUsuario(login, senha);
 
 
-            if(usuario != null)
+            if(acesso != null)
             {
-                var token = _usuarioAppService.Login(usuarioDTO);
+                var token = _usuarioAppService.Login(acesso);
                 var returnRequest = new
                 {
-                    login = usuario.USU_STR_LOGIN,
+                    login = acesso.USU_STR_LOGIN,
+                    permissao = acesso.Perfil.PER_STR_NOME,
                     token
                 };
 
@@ -52,13 +54,14 @@ namespace CourtageCoin.Services.Api.Controllers
             
         }
 
-        [Authorize]
+        [Authorize(Roles = "Administrador")]
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
             return Ok(_usuarioAppService.GetAll());
         }
 
+        [Authorize(Roles = "Administrador")]
         [HttpPost]
         public ActionResult Adicionar([FromBody] Usuario usuario)
         {
@@ -78,7 +81,7 @@ namespace CourtageCoin.Services.Api.Controllers
             }
         }
 
-        [Authorize]
+        [Authorize(Roles = "Administrador")]
         [HttpGet("{id}")]
         public ActionResult<string> ObterPorId(int id)
         {
@@ -97,7 +100,7 @@ namespace CourtageCoin.Services.Api.Controllers
             }
         }
 
-        [Authorize]
+        [Authorize(Roles = "Administrador")]
         [HttpPut("{id}")]
         public ActionResult Atualzar([FromBody] Usuario usuario)
         {

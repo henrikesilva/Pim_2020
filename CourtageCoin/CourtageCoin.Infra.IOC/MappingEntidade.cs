@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using CourtageCoin.Application.DTO.EntitiesDTO;
 using CourtageCoin.Domain.Entities;
 
 namespace CourtageCoin.Infra.CrossCutting.IOC

@@ -9,7 +9,7 @@ namespace CourtageCoin.Services.Api.Controllers
 {
     [Route ("[controller]")]
     [ApiController]
-    [Authorize]
+    [Authorize(Roles = "Administrador")]
     public class FuncionarioController : ControllerBase
     {
         private readonly IFuncionarioAppService _funcionarioAppService;

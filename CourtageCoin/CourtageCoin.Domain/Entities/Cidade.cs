@@ -6,9 +6,7 @@ namespace CourtageCoin.Domain.Entities
     {
         public int CID_INT_ID { get; set; }
         public string CID_STR_DESC { get; set; }
-        public int EST_INT_ID { get; set; }
 
-        public virtual Estado Estado { get; set; }
         public virtual IEnumerable<Endereco> Enderecos { get; set; }
     }
 }

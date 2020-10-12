@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CourtageCoin.Domain.Entities
+namespace CourtageCoin.Application.DTO.EntitiesDTO
 {
     public class UsuarioDTO
     {
@@ -12,8 +12,9 @@ namespace CourtageCoin.Domain.Entities
         public DateTime USU_DATA_CADASTRO { get; set; }
         public int FUN_INT_ID { get; set; }
         public int CLI_INT_ID { get; set; }
+        public int PER_INT_ID { get; set; }
 
-        
+
         public virtual FuncionarioDTO FuncionarioDTO { get; set; }
         public virtual ClienteDTO ClienteDTO { get; set; }
         

@@ -20,14 +20,14 @@ namespace CourtageCoin.Application.Services
             _mapper = mapper;
         }
 
-        public UsuarioDTO GetUsuario(string login, string senha)
+        public Usuario GetUsuario(string login, string senha)
         {
-            return _mapper.Map<UsuarioDTO>(_usuarioService.Login(login, senha));
+            return _mapper.Map<Usuario>(_usuarioService.Login(login, senha));
         }
 
-        public string Login(UsuarioDTO usuarioDTO)
+        public string Login(Usuario usuario)
         {
-            if (usuarioDTO != null)
+            if (usuario != null)
             {
                 var tokenHandler = new JwtSecurityTokenHandler();
                 var key = Encoding.ASCII.GetBytes(Usuario.secret);
@@ -35,7 +35,8 @@ namespace CourtageCoin.Application.Services
                 {
                     Subject = new ClaimsIdentity(new Claim[]
                     {
-                        new Claim(ClaimTypes.Name, usuarioDTO.USU_STR_LOGIN)
+                        new Claim(ClaimTypes.Name, usuario.USU_STR_LOGIN),
+                        new Claim(ClaimTypes.Role, usuario.Perfil.PER_STR_NOME)
                     }),
 
                     SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key),

@@ -24,18 +24,12 @@ namespace CourtageCoin.Infra.Data.Repositories
                 using(var con = new SqlConnection(connectionString))
                 {
                     var funcionario = con.Execute(@"INSERT INTO
-	                                                        FUNCIONARIO 
-		                                                    (FUN_INT_MATRICULA, 
-		                                                    FUN_STR_NOME,
-		                                                    SET_INT_ID)
+	                                                    FUNCIONARIO 
+		                                                (FUN_STR_NOME)
                                                     VALUES
-	                                                    (@FUN_INT_MATRICULA, 
-		                                                    @FUN_STR_NOME,
-		                                                    @SET_INT_ID)",
+	                                                    (@FUN_STR_NOME)",
                                                     new {
-                                                        FUN_INT_MATRICULA = obj.FUN_INT_MATRICULA,
                                                         FUN_STR_NOME = obj.FUN_STR_NOME,
-                                                        SET_INT_ID = obj.SET_INT_ID
                                                     });
                 }
             }
@@ -56,21 +50,12 @@ namespace CourtageCoin.Infra.Data.Repositories
                 var connectionString = this.GetConnection();
                 using(var con = new SqlConnection(connectionString))
                 {
-                    var funcionario = con.Query<Funcionario, Setor, Funcionario>(@"SELECT   
-	                                                                                    F.FUN_INT_ID,
-	                                                                                    F.FUN_INT_MATRICULA,
-	                                                                                    F.FUN_STR_NOME,
-	                                                                                    F.SET_INT_ID,
-	                                                                                    S.SET_STR_NOME
-                                                                                    FROM 
-	                                                                                    FUNCIONARIO AS F
-	                                                                                    INNER JOIN SETOR AS S ON S.SET_INT_ID = F.SET_INT_ID", 
-                                                                                    (Funcionario, Setor) => 
-                                                                                    {
-                                                                                        Funcionario.Setor = Setor;
-
-                                                                                        return Funcionario;
-                                                                                    }, splitOn: "FUN_INT_ID, SET_INT_ID");
+                    var funcionario = con.Query<Funcionario>(@"SELECT   
+	                                                                F.FUN_INT_ID,
+	                                                                F.FUN_STR_NOME
+                                                                FROM 
+	                                                                FUNCIONARIO AS F");
+                                                                                    
                     return funcionario;
                 }
             }
@@ -91,22 +76,12 @@ namespace CourtageCoin.Infra.Data.Repositories
                 var connectionString = this.GetConnection();
                 using (var con = new SqlConnection(connectionString))
                 {
-                    var funcionario = con.Query<Funcionario, Setor, Funcionario>(@"SELECT   
-	                                                                                    F.FUN_INT_ID,
-	                                                                                    F.FUN_INT_MATRICULA,
-	                                                                                    F.FUN_STR_NOME,
-	                                                                                    F.SET_INT_ID,
-	                                                                                    S.SET_STR_NOME
-                                                                                    FROM 
-	                                                                                    FUNCIONARIO AS F
-	                                                                                    INNER JOIN SETOR AS S ON S.SET_INT_ID = F.SET_INT_ID
-                                                                                    WHERE F.FUN_INT_ID = @FUN_INT_ID",
-                                                                                    (Funcionario, Setor) =>
-                                                                                    {
-                                                                                        Funcionario.Setor = Setor;
-
-                                                                                        return Funcionario;
-                                                                                    }, new { FUN_INT_ID = id }, splitOn: "FUN_INT_ID, SET_INT_ID").FirstOrDefault();
+                    var funcionario = con.Query<Funcionario>(@"SELECT   
+	                                                                F.FUN_INT_ID,
+	                                                                F.FUN_STR_NOME
+                                                                FROM 
+	                                                                FUNCIONARIO AS F
+                                                                WHERE F.FUN_INT_ID = @FUN_INT_ID", new { FUN_INT_ID = id }).FirstOrDefault();
                     return funcionario;
                 }
             }
@@ -130,17 +105,13 @@ namespace CourtageCoin.Infra.Data.Repositories
                     var funcionario = con.Execute(@"UPDATE
 	                                                    FUNCIONARIO
                                                     SET
-	                                                    FUN_INT_MATRICULA = @FUN_INT_MATRICULA,
-	                                                    FUN_STR_NOME = @FUN_STR_NOME,
-	                                                    SET_INT_ID = @SET_INT_ID
+	                                                    FUN_STR_NOME = @FUN_STR_NOME
                                                     WHERE
 	                                                    FUN_INT_ID = @FUN_INT_ID",
                                                     new
                                                     {
                                                         obj.FUN_INT_ID,
-                                                        FUN_INT_MATRICULA = obj.FUN_INT_MATRICULA,
-                                                        FUN_STR_NOME = obj.FUN_STR_NOME,
-                                                        SET_INT_ID = obj.SET_INT_ID
+                                                        FUN_STR_NOME = obj.FUN_STR_NOME
                                                     });
                 }
             }
