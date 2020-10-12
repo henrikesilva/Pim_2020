@@ -4,10 +4,9 @@ namespace CourtageCoin.Domain.Entities
 {
     public class Funcionario
     {
-        public int Matricula { get; set; }
-        public string Perfil { get; set; }
+        public int FUN_INT_ID { get; set; }
+        public string FUN_STR_NOME { get; set; }
         
-        public virtual Relatorio Relatorio { get; set; }
-        public virtual ICollection<Usuario> usuario { get; set; }
+        public virtual IEnumerable<Usuario> Usuarios { get; set; }
     }
 }

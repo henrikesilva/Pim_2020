@@ -1,15 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace CourtageCoin.Domain.Entities
 {
     public class Cliente
     {
-        public int CodigoCliente { get; set; }
-        public DateTime DataCadastro { get; set; }
-        
-        public virtual ICollection<Usuario> usuario { get; set; }
-        public Relatorio relatorio { get; set; }
-        public Carteira carteira { get; set; }
+        public int CLI_INT_ID { get; set; }
+        public int PEF_INT_ID { get; set; }
+        public int PEJ_INT_ID { get; set; }
+
+        public virtual PessoaFisica PessoaFisica { get; set; }
+        public virtual PessoaJuridica PessoaJuridica { get; set; }
+        public virtual IEnumerable<Usuario> Usuarios { get; set; }
     }
 }

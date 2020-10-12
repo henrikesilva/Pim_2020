@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="6.0.0" />
+    <PackageReference Include="AutoMapper" Version="10.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CourtageCoin.Application.DTO\CourtageCoin.Application.DTO.csproj" />
+    <ProjectReference Include="..\CourtageCoin.Application\CourtageCoin.Application.csproj" />
+    <ProjectReference Include="..\CourtageCoin.Domain\CourtageCoin.Domain.csproj" />
+    <ProjectReference Include="..\CourtageCoin.Infra.Data\CourtageCoin.Infra.Data.csproj" />
+  </ItemGroup>
+
+</Project>
