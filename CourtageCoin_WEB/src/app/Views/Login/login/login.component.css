@@ -1,0 +1,8 @@
+.container-fluid {
+  background-color: #4574c7;
+  min-height: 100%;
+  max-height: 100%;
+  position: fixed;
+}
+
+

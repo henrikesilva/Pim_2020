@@ -1,0 +1,20 @@
+.container-fluid {
+    margin-top: 0.2rem;
+    width: 98%;
+}
+
+.card{
+    width: 88%;
+    margin-top: 0.5rem;
+    margin-left: 1rem;
+    margin-bottom: 0.8rem;
+}
+
+.nome{
+    text-align: center;
+}
+
+.cotacao{
+    width: 90%;
+    height: 700px;
+}

@@ -1,0 +1,54 @@
+<section class="container col-md-6">
+    <div>
+        <form>
+
+            <!-- Grupo de dados referentes ao adicionar usuário -->
+            <div class="col-md-12 border">
+                <legend>
+                    Editar Cliente
+                </legend>
+
+                <!-- Adicionar usuário-->
+                <div class="form-group">
+                    <div class="form-group">
+                        <label for="nome">Nome</label>
+                        <input class="form-control" type="text" name="nome" id="nome" [(ngModel)]="cliente.clI_STR_NOME"
+                            required value="{{cliente.clI_STR_NOME}}" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cpf">CPF</label>
+                        <input class="form-control" type="text" name="cpf" id="cpf" [(ngModel)]="cliente.clI_STR_CPF"
+                            required value="{{cliente.clI_STR_CPF}}" />
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="data">Data de Nascimento</label>
+                        <input class="form-control" type="text" name="data" id="data" [(ngModel)]="cliente.clI_DATE_NASCIMENTO"
+                            required value="{{cliente.clI_DATE_NASCIMENTO}}" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputEndereco">Endereco</label>
+                        <select id="inputEndereco" class="form-control" (change)="buscarEndereco($event.target.value)">
+                            <option selected>{{cliente.endereco.enD_STR_RUA}}</option>
+                            <option disabled>-----------</option>
+                            <option *ngFor="let e of enderecos">
+                                {{e.enD_STR_RUA}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <div class="nav justify-content-end">
+            <div>
+                <button style="margin: 20px;" type="submit" class="button btn btn-primary"
+                    (click)="atualizarCliente()">Atualizar</button>
+
+                <button type="submit" class="button btn btn-secondary" (click)="cancelar()">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,48 @@
+<div class="table-responsive">
+    <div>
+      <mat-form-field class="home col-sm-2">
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Buscar">
+      </mat-form-field>
+      <!--Botão para adicionar servidor -->
+        <button type="button" class="btn btn-primary button"  [routerLink]="['/novo-usuario']"> 
+          Novo Usuario
+        </button> 
+  </div>
+  
+    <table mat-table [dataSource]="dataSource" matSort>
+      <!-- Action Column -->
+      <ng-container matColumnDef="USU_INT_ID">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Editar</th>
+        <td mat-cell *matCellDef="let usuario">
+          <a routerLink="/editar-usuario/{{usuario.usU_INT_ID}}" class="edit">
+            <i class="material-icons">
+              edit
+            </i>
+          </a>
+        </td>
+      </ng-container>
+  
+      <!-- Coluna Login -->
+      <ng-container matColumnDef="USU_STR_LOGIN">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Login </th>
+        <td mat-cell *matCellDef="let usuario">{{usuario.usU_STR_LOGIN}}</td>
+      </ng-container>
+  
+      <!-- Coluna Telefone -->
+      <ng-container matColumnDef="USU_INT_TELEFONE">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Telefone </th>
+        <td mat-cell *matCellDef="let usuario"> {{usuario.usU_INT_TELEFONE}} </td>
+      </ng-container>
+
+      <!-- Coluna Email -->
+      <ng-container matColumnDef="USU_STR_EMAIL">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+        <td mat-cell *matCellDef="let usuario"> {{usuario.usU_STR_EMAIL}} </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  
+    <mat-paginator [pageSizeOptions]="[10, 20, 30]" showFirstLastButtons></mat-paginator>
+  </div>

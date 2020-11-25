@@ -1,0 +1,24 @@
+nav{
+    background-color: rgb(0,79,153);
+    text-decoration: none;
+}
+  
+.navbar-dark .navbar-nav .nav-link{
+    color: white;
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+  
+a{
+    color: white;
+    text-decoration: none;
+}
+  
+img{
+    max-width: 35%;
+}
+  
+.img-thumbnail{
+    background-color: transparent!important;
+    border: none;
+}

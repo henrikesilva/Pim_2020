@@ -1,0 +1,24 @@
+.home {
+    margin-top: 0.2rem;
+}
+  
+table {
+    width: 100%;
+}
+
+select{
+    width: 20px;
+    margin-left: 0.5rem;
+    border: 0px;
+}
+  
+  
+.button {
+    margin-left: 57%;
+}
+  
+  
+.button > a {
+    color: white;
+}
+  

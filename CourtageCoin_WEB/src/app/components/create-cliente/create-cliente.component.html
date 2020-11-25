@@ -1,0 +1,41 @@
+<section class="container col-md-6">
+    <form #createForm="ngForm">
+        <div class="col-md-12 border">
+            <legend>
+                Novo Cliente
+            </legend>
+            
+            <div class="form-group">
+                <label for="nome">Nome</label>
+                <input type="text" name="nome" id="nome" class="form-control" [(ngModel)]="cliente.CLI_STR_NOME" required>
+            </div>
+
+            <div class="form-group">
+                <label for="cpf">CPF</label>
+                <input type="text" name="cpf" id="cpf" class="form-control" maxlength="11" placeholder="123.123.134-00" [(ngModel)]="cliente.CLI_STR_CPF" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="data">Data de Nascimento</label>
+                <input type="date" name="data" id="data" class="form-control" [(ngModel)]="cliente.CLI_DATE_NASCIMENTO" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="endereco">Endereco</label>
+                <select name="endereco" id="endereco" class="form-control" (change)="buscarEndereco($event.target.value)" required>
+                    <option>Selecione ...</option>
+                    <option *ngFor="let e of enderecos">
+                        {{e.enD_STR_RUA}}
+                    </option>
+                </select>
+            </div>
+        </div>
+    </form>
+    <div class="nav justify-content-end">
+        <div>
+          <button type="submit" class="button btn btn-primary" (click)="criar(createForm)">Adicionar</button>
+          <button type="submit" class="button btn btn-secondary" (click)="cancelar()">Cancelar </button>
+        </div>
+    </div>
+
+</section>

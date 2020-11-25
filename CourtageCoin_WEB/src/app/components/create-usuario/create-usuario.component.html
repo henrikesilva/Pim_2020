@@ -1,0 +1,66 @@
+<section class="container col-md-6">
+    <form #createForm="ngForm">
+        <div class="col-md-12 border">
+            <legend>
+                Novo Usuário
+            </legend>
+            
+            <div class="form-group">
+                <label for="login">Login</label>
+                <input type="text" name="login" id="login" class="form-control" [(ngModel)]="usuario.USU_STR_LOGIN" required>
+            </div>
+
+            <div class="form-group">
+                <label for="senha">Senha</label>
+                <input type="password" name="senha" id="senha" class="form-control" [(ngModel)]="usuario.USU_STR_SENHA" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="telefone">Telefone</label>
+                <input type="number" name="telefone" id="telefone" class="form-control" [(ngModel)]="usuario.USU_INT_TELEFONE" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" class="form-control" [(ngModel)]="usuario.USU_STR_EMAIL" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="perfil">Perfil</label>
+                <select name="perfil" id="perfil" class="form-control" (change)="buscarPerfil($event.target.value)" required>
+                    <option>Selecione ...</option>
+                    <option *ngFor="let p of perfis">
+                        {{p.peR_STR_NOME}}
+                    </option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="funcionario">Funcionario</label>
+                <select name="funcionario" id="funcionario" class="form-control" (change)="buscarFuncionario($event.target.value)" required>
+                    <option>Selecione ...</option>
+                    <option *ngFor="let f of funcionarios">
+                        {{f.fuN_STR_NOME}}
+                    </option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="cliente">Cliente</label>
+                <select name="cliente" id="cliente" class="form-control" (change)="buscarCliente($event.target.value)" required>
+                    <option>Selecione ...</option>
+                    <option *ngFor="let c of clientes">
+                        {{c.clI_STR_NOME}}
+                    </option>
+                </select>
+            </div>
+        </div>
+    </form>
+    <div class="nav justify-content-end">
+        <div>
+          <button type="submit" class="button btn btn-primary" (click)="criar(createForm)">Adicionar</button>
+          <button type="submit" class="button btn btn-secondary" (click)="cancelar()">Cancelar </button>
+        </div>
+    </div>
+
+</section>

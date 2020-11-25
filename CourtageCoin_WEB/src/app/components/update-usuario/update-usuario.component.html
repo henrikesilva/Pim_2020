@@ -1,0 +1,60 @@
+<section class="container col-md-6">
+    <div>
+        <form>
+
+            <!-- Grupo de dados referentes ao adicionar usuário -->
+            <div class="col-md-12 border">
+                <legend>
+                    Editar Usuário
+                </legend>
+
+                <!-- Adicionar usuário-->
+                <div class="form-group">
+                    <div class="form-group">
+                        <label for="login">Login</label>
+                        <input class="form-control" type="text" name="login" id="login" [(ngModel)]="usuario.usU_STR_LOGIN"
+                            required value="{{usuario.usU_STR_LOGIN}}" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="senha">Senha</label>
+                        <input class="form-control" type="password" name="senha" id="senha" placeholder="******" [(ngModel)]="usuario.usU_STR_SENHA"
+                            required value="{{usuario.usU_STR_SENHA}}" />
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input class="form-control" type="email" name="email" id="email" [(ngModel)]="usuario.usU_STR_EMAIL"
+                            required value="{{usuario.usU_STR_EMAIL}}" />
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="tel">Telefone</label>
+                        <input class="form-control" type="tel" name="tel" id="tel" [(ngModel)]="usuario.usU_INT_TELEFONE"
+                            required value="{{usuario.usU_INT_TELEFONE}}" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputPerfil">Perfil</label>
+                        <select id="inputPerfil" class="form-control" (change)="buscarPerfil($event.target.value)">
+                            <option selected>{{usuario.perfil.peR_STR_NOME}}</option>
+                            <option disabled>-----------</option>
+                            <option *ngFor="let p of perfis">
+                                {{p.peR_STR_NOME}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <div class="nav justify-content-end">
+            <div>
+                <button style="margin: 20px;" type="submit" class="button btn btn-primary"
+                    (click)="atualizarUsuario()">Atualizar</button>
+
+                <button type="submit" class="button btn btn-secondary" (click)="cancelar()">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</section>

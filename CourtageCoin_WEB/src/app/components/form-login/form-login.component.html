@@ -1,0 +1,22 @@
+<mat-card class="card">
+    <img class="logo" src="./assets/img/logo.png" alt="Logo Unidas">
+    <h3 class="nome">
+        Courtage Coin
+    </h3>
+    <mat-card-content class="content">
+        <form class="form">
+            <mat-form-field appearance="fill">
+                <mat-label class="input">Usuario</mat-label>
+                <input matInput type="text" [(ngModel)]="user.USU_STR_LOGIN" name="Login">
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label class="input">Senha</mat-label>
+                <input matInput type="password" [(ngModel)]='user.USU_STR_SENHA' name="Senha">
+            </mat-form-field>
+
+            <button type="submit" class="button btn" (click)='submit()'>
+                Login
+            </button>
+        </form>
+    </mat-card-content>
+</mat-card>
