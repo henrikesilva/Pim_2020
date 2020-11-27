@@ -23,7 +23,8 @@ export class FormLoginComponent implements OnInit {
     USU_INT_ID: null,
     FUN_INT_ID: null,
     CLI_INT_ID: null,
-    PER_INT_ID: null
+    PER_INT_ID: null,
+    permissao: null
   }
 
   returnUrl: string;

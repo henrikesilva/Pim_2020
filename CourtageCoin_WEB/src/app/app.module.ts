@@ -35,6 +35,7 @@ import { UpdateUsuarioComponent } from './components/update-usuario/update-usuar
 import { HomeClienteComponent } from './components/home-cliente/home-cliente.component';
 import { CreateClienteComponent } from './components/create-cliente/create-cliente.component';
 import { UpdateClienteComponent } from './components/update-cliente/update-cliente.component';
+import { ExtratoComponent } from './components/extrato/extrato.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { UpdateClienteComponent } from './components/update-cliente/update-clien
     UpdateUsuarioComponent,
     HomeClienteComponent,
     CreateClienteComponent,
-    UpdateClienteComponent
+    UpdateClienteComponent,
+    ExtratoComponent
   ],
   imports: [
     BrowserModule,

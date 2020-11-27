@@ -55,7 +55,7 @@ namespace CourtageCoin.Services.Api.Controllers
             
         }
 
-        [Authorize(Roles = "Administrador")]
+        [Authorize]
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
@@ -82,7 +82,7 @@ namespace CourtageCoin.Services.Api.Controllers
             }
         }
 
-        [Authorize(Roles = "Administrador")]
+        [Authorize]
         [HttpGet("{id}")]
         public ActionResult<string> ObterPorId(int id)
         {

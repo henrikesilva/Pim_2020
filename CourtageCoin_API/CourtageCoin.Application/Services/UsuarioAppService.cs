@@ -36,6 +36,7 @@ namespace CourtageCoin.Application.Services
                     Subject = new ClaimsIdentity(new Claim[]
                     {
                         new Claim(ClaimTypes.Name, usuario.USU_STR_LOGIN),
+                        new Claim(ClaimTypes.Role, usuario.PER_INT_ID.ToString()),
                         new Claim(ClaimTypes.Role, usuario.Perfil.PER_STR_NOME)
                     }),
 

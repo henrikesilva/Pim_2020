@@ -1,3 +1,5 @@
+import { Perfil } from './Perfil.model';
+
 export class Usuario{
     USU_INT_ID: number;
     USU_STR_LOGIN: string;
@@ -8,4 +10,6 @@ export class Usuario{
     FUN_INT_ID: number;
     CLI_INT_ID: number;
     PER_INT_ID: number;
+
+    permissao: string;
 }

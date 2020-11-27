@@ -1,0 +1,26 @@
+<Section class="container-fluid">
+    <h2 class="nome">
+        Extrato Completo
+    </h2>
+    
+    <mat-card class="card col-md-12">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Código da Transação</th>
+                    <th scope="col">Valor da Transação</th>
+                    <th scope="col">Data da Transação</th>
+                    <th scope="col">Saldo Atual</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{carteira.trA_INT_COD}}</td>
+                    <td>R$ {{carteira.trA_DEC_VALOR}}</td>
+                    <td>{{carteira.trA_DATE_DATA}}</td>
+                    <td>R$ {{valor.caR_DEC_SALDO}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </mat-card>
+</Section>

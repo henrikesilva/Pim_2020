@@ -15,13 +15,13 @@ export class AuthGuard {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot){
     var localUser = localStorage.getItem('currentUser');
+    var permission = this.authService.currentUserValue;
 
     if(localUser != null){
-      if(route.data.roles){
+      if(route.data.roles && route.data.roles.indexof(permission.permissao) === -1){
         this.router.navigate(['/']);
         return false;
       }
-
       return true;
     }
     else{
