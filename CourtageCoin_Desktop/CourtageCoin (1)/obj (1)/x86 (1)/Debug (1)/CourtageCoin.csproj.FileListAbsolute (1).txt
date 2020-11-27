@@ -1,0 +1,13 @@
+C:\Documents and Settings\Luciana\Desktop\4º Semestre\Courtage Coin\CourtageCoin\CourtageCoin\bin\Debug\CourtageCoin.exe
+C:\Documents and Settings\Luciana\Desktop\4º Semestre\Courtage Coin\CourtageCoin\CourtageCoin\bin\Debug\CourtageCoin.pdb
+C:\Documents and Settings\Luciana\Desktop\4º Semestre\Courtage Coin\CourtageCoin\CourtageCoin\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Luciana\Desktop\4º Semestre\Courtage Coin\CourtageCoin\CourtageCoin\obj\x86\Debug\CourtageCoin.Properties.Resources.resources
+C:\Documents and Settings\Luciana\Desktop\4º Semestre\Courtage Coin\CourtageCoin\CourtageCoin\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Documents and Settings\Luciana\Desktop\4º Semestre\Courtage Coin\CourtageCoin\CourtageCoin\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Documents and Settings\Luciana\Desktop\4º Semestre\Courtage Coin\CourtageCoin\CourtageCoin\obj\x86\Debug\CourtageCoin.exe
+C:\Documents and Settings\Luciana\Desktop\4º Semestre\Courtage Coin\CourtageCoin\CourtageCoin\obj\x86\Debug\CourtageCoin.pdb
+C:\Documents and Settings\Luciana\Desktop\4º Semestre\Courtage Coin\CourtageCoin\CourtageCoin\obj\x86\Debug\CourtageCoin.FRMLogin.resources
+C:\Documents and Settings\Luciana\Desktop\4º Semestre\Courtage Coin\CourtageCoin\CourtageCoin\obj\x86\Debug\CourtageCoin.frmMenuPrincipal.resources
+C:\Documents and Settings\Luciana\Desktop\4º Semestre\Courtage Coin\CourtageCoin\CourtageCoin\obj\x86\Debug\CourtageCoin.View.Cadastros.frmFunc.resources
+C:\Documents and Settings\Luciana\Desktop\4º Semestre\Courtage Coin\CourtageCoin\CourtageCoin\obj\x86\Debug\CourtageCoin.View.Cadastros.frmCliente.resources
+C:\Documents and Settings\Luciana\Desktop\4º Semestre\Courtage Coin\CourtageCoin\CourtageCoin\obj\x86\Debug\CourtageCoin.View.Cadastros.frmRelatorio.resources
